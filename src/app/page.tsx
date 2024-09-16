@@ -13,9 +13,17 @@ const mockImages = mockImageUrls.map((url, index) => ({
 }));
 
 export default async function HomePage() {
+  const posts = await db.query.posts.findMany();
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
+        <Suspense fallback={<div className='w-48'>Loading...</div>}>
+          {posts.map((post) => (
+            <div key={post.id} className="w-48">
+              <p>{post.name}</p>
+            </div>
+          ))}
+        </Suspense>
         <Suspense fallback={<div className='w-48'>Loading...</div>}>
           {[...mockImages, ...mockImages, ...mockImages].map((image) => (
             <div key={image.id} className="w-48">
