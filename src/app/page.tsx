@@ -4,32 +4,16 @@ import { db } from "~/server/db";
 
 export const dynamic = "force-dynamic";
 
-const mockImageUrls = [
-  "https://utfs.io/f/RMDArrATFzJjTeEcLOWp6g4N9W02VwZQxCK7lsifjTo3OGUu",
-  "https://utfs.io/f/RMDArrATFzJjBsxLFCKE35KMQdurwNxyiYIbcPEmJFz6VHka",
-];
-
-const mockImages = mockImageUrls.map((url, index) => ({
-  id: index + 1,
-  url,
-}));
-
 export default async function HomePage() {
-  const posts = await db.query.posts.findMany();
+  const images = await db.query.images.findMany();
+  const multiImagesCopies = [...images, ...images, ...images, ...images, ...images];
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
         <Suspense fallback={<div className='w-48'>Loading...</div>}>
-          {posts.map((post) => (
-            <div key={post.id} className="w-48">
-              <p>{post.name}</p>
-            </div>
-          ))}
-        </Suspense>
-        <Suspense fallback={<div className='w-48'>Loading...</div>}>
-          {[...mockImages, ...mockImages, ...mockImages].map((image) => (
+          {multiImagesCopies.map((image) => (
             <div key={image.id} className="w-48">
-              <Image src={image.url} alt="Mock Image" width={192} height={192} />
+              <Image src={image.url} alt={image.name} width={192} height={192} />
             </div>
           ))}
         </Suspense>
