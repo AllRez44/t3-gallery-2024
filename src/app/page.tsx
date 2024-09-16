@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { db } from "~/server/db";
 
+export const dynamic = "force-dynamic";
+
 const mockImageUrls = [
   "https://utfs.io/f/RMDArrATFzJjTeEcLOWp6g4N9W02VwZQxCK7lsifjTo3OGUu",
   "https://utfs.io/f/RMDArrATFzJjBsxLFCKE35KMQdurwNxyiYIbcPEmJFz6VHka",
