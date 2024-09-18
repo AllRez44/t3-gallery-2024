@@ -1,4 +1,4 @@
-import { drizzle } from 'drizzle-orm/vercel-postgres';
+import { drizzle } from "drizzle-orm/vercel-postgres";
 
 import { sql } from "@vercel/postgres";
 
@@ -8,10 +8,9 @@ import {
   text,
   timestamp,
   uniqueIndex,
-} from 'drizzle-orm/pg-core';
+} from "drizzle-orm/pg-core";
 
-import * as schema from './schema';
-
+import * as schema from "./schema";
 
 // Use this object to send drizzle queries to your DB
 
