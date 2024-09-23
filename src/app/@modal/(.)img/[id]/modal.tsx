@@ -1,6 +1,7 @@
 'use client';
 
-import { type ElementRef, useEffect, useRef } from 'react';
+import type { ElementRef, MouseEvent } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPortal } from 'react-dom';
 
@@ -18,14 +19,18 @@ export default function Modal({ children }: { children: React.ReactNode }) {
         router.back();
     }
 
-    const handleClickImage = (event: Event) => {
+    const onClickImage = (event: MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
     };
 
     return createPortal(
-        <dialog onClick={onDismiss} ref={dialogRef} className="modal flex w-screen h-screen justify-center items-center bg-zinc-900/50" onClose={onDismiss}>
-            <div className="w-fit h-fit" onClick={handleClickImage}>{children}</div>
-            <button onClick={onDismiss} className="close-button" />
+        <dialog
+            onClick={onDismiss}
+            ref={dialogRef}
+            className="modal flex w-screen h-screen justify-center items-center bg-zinc-900/50 text-white"
+            onClose={onDismiss}
+        >
+            <div className="w-fit h-fit" onClick={onClickImage}>{children}</div>
         </dialog>,
         document.getElementById('modal-root')!
     );
