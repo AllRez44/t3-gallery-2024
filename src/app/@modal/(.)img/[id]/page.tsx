@@ -1,19 +1,17 @@
-import Image from "next/image";
-import { getImage } from "~/server/db/queries";
+import FullPageImage from "~/compontents/full-page-image";
+import Modal from "./modal";
+import { Suspense } from "react";
 
 export default async function PhotoModal({
     params: { id: photoId },
 }: {
     params: { id: string };
     }) {
-    const id = Number(photoId);
-    if (isNaN(id)) throw new Error("Invalid photo ID");
-
-    const image = await getImage(id);
     return (
-        <div className="flex flex-col items-center p-4 w-96">
-            <Image width={400} height={400} src={image.url} alt={image.name} className="max-w-full" />
-            <p className="text-md font-medium mt-1.5 text-gray-300">{image.name}</p>
-        </div>
+        <Modal>
+            <Suspense fallback={<div className="w-full text-center">Loading...</div>}>
+                <FullPageImage id={photoId} />
+            </Suspense>
+        </Modal>
     );
 }

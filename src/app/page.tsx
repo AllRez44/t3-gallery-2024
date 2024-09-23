@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { Images } from "./_components/images";
-import { SignInMessage } from "./_components/signin_message";
+import { Images } from "../compontents/images";
+import { SignInMessage } from "./_components/signin-message";
 
 export const dynamic = "force-dynamic";
 
