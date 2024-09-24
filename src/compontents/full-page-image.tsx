@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { type MouseEvent } from "react";
 import { getImage } from "~/server/db/queries";
 
 export default async function FullPageImage({
@@ -11,8 +12,8 @@ export default async function FullPageImage({
 
     const image = await getImage(id);
     return (
-        <div className="flex flex-col items-center my-auto w-auto max-w-[100dvw] max-h-full p-4">
-            <Image width={400} height={400} src={image.url} alt={image.name} className="w-full" />
+        <div className="flex flex-col items-center my-auto w-[32rem] max-w-[100dvw] max-h-full p-4">
+            <Image width={400} height={400} src={image.url} alt={image.name} className="w-full rounded-sm" />
             <p className="text-md font-medium mt-1.5 text-gray-300">{image.name}</p>
         </div>
     );
