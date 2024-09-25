@@ -6,14 +6,14 @@ import SimpleUploadButton from "./simple-upload-button";
 
 export function TopNav() {
   return (
-    <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
+    <nav className="flex w-full items-center justify-between border-b p-6 text-xl font-semibold">
       <GalleryButton />
       <div>
         <SignedOut>
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <div className="flex gap-8">
+          <div className="flex gap-6">
             <SimpleUploadButton />
             <UserButton />
           </div>
