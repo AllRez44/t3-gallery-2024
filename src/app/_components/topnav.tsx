@@ -1,7 +1,6 @@
 "use client";
 
 import { SignedOut, SignedIn, SignInButton, UserButton } from "@clerk/nextjs";
-import { UploadButton } from "~/utils/uploadthing";
 import GalleryButton from "./gallery-button";
 import SimpleUploadButton from "./simple-upload-button";
 
