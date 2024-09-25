@@ -1,13 +1,11 @@
 "use client";
 
 import { SignedOut, SignedIn, SignInButton, UserButton } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 import { UploadButton } from "~/utils/uploadthing";
 import GalleryButton from "./gallery-button";
+import SimpleUploadButton from "./simple-upload-button";
 
 export function TopNav() {
-  const router = useRouter();
-
   return (
     <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
       <GalleryButton />
@@ -16,13 +14,8 @@ export function TopNav() {
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <div className="flex gap-12">
-            <UploadButton
-              endpoint="imageUploader"
-              onClientUploadComplete={() => {
-                router.refresh();
-              }}
-            />
+          <div className="flex gap-8">
+            <SimpleUploadButton />
             <UserButton />
           </div>
         </SignedIn>
